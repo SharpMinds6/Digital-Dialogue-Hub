@@ -1,0 +1,6 @@
+@DigitalDialogueHub_HostAddress = http://localhost:5067
+
+GET {{DigitalDialogueHub_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
