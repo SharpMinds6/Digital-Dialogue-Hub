@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DigitalDialogueHub.Mobile.Views.ForumPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:DigitalDialogueHub.Mobile.ViewModels"
+    BackgroundColor="#F5F5F5"
+    Shell.NavBarIsVisible="False">
+
+    <!-- BindingContext se postavlja u code-behind (ForumPage.xaml.cs) preko DI-a -->
+
+    <Grid RowDefinitions="Auto, Auto, *, Auto">
+
+        <!-- Top bar -->
+        <Grid Padding="15,40,15,10" BackgroundColor="#F5F5F5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Hamburger menu -->
+            <Image Source="menu_icon.png"
+                   WidthRequest="28" HeightRequest="28"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnMenuTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <!-- Logo -->
+            <Image Source="logo.png"
+                   Grid.Column="1"
+                   HeightRequest="40"
+                   HorizontalOptions="Center" />
+
+            <!-- Profile icon -->
+            <Image Source="image3.png"
+                   Grid.Column="2"
+                   WidthRequest="30"
+                   HeightRequest="30"
+                   HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnProfileIconTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+
+        <!-- Search bar -->
+        <Frame Grid.Row="1"
+               Margin="15,5"
+               Padding="10"
+               CornerRadius="25"
+               BackgroundColor="White"
+               HasShadow="False">
+            <HorizontalStackLayout>
+                <Image Source="icon_searchmajor.png"
+                       WidthRequest="20"
+                       HeightRequest="20"
+                       VerticalOptions="Center" />
+                <Entry Placeholder="Search"
+                       FontSize="14"
+                       TextColor="Black"
+                       BackgroundColor="Transparent"
+                       VerticalOptions="Center"
+                       Margin="10,0,0,0" />
+            </HorizontalStackLayout>
+        </Frame>
+
+        <!-- Posts list -->
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding Discussions}"
+                        Margin="0,5"
+                        ItemsLayout="VerticalList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="15,10"
+                           Padding="15"
+                           BackgroundColor="White"
+                           CornerRadius="20"
+                           HasShadow="True">
+                        <VerticalStackLayout Spacing="10">
+                            <!-- Title -->
+                            <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="15" TextColor="Black" />
+                            <!-- UserName -->
+                            <HorizontalStackLayout Spacing="6">
+                                <Image Source="image3.png" WidthRequest="25" HeightRequest="25"/>
+                                <Label Text="{Binding UserName}" FontSize="12" TextColor="#777" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Bottom navbar -->
+        <Grid Grid.Row="3" BackgroundColor="White" Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Home -->
+            <Image Source="ic_round_home.png"
+                   WidthRequest="28"
+                   HeightRequest="28">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHomeTapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+            <!-- Add post -->
+            <Image Source="ic_round_plus.png"
+                   Grid.Column="1"
+                   WidthRequest="28"
+                   HeightRequest="28"
+                   HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnAddPostTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <!-- Notifications -->
+            <Image Source="icon_bell.png"
+                   Grid.Column="2"
+                   WidthRequest="28"
+                   HeightRequest="28"
+                   HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNotificationTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </Grid>
+</ContentPage>

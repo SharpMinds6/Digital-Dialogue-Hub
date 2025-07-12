@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:DigitalDialogueHub.Mobile.ViewModels"
+             x:Class="DigitalDialogueHub.Mobile.Views.ChangePersonalInfoPage"
+             x:DataType="viewmodels:ChangePersonalInfoPageViewModel"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+
+   
+    <Grid RowDefinitions="Auto,Auto,*">
+
+        <!-- Header -->
+        <Grid Padding="20,40,20,10" ColumnDefinitions="Auto,*">
+            <Image Source="icon_back.png"
+                   HeightRequest="24"
+                   WidthRequest="24"
+                   VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="Personal Info"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Grid.Column="1" />
+        </Grid>
+
+        <!-- Avatar i trenutne informacije -->
+        <VerticalStackLayout Grid.Row="1" Padding="30,0,30,10" Spacing="8" HorizontalOptions="Center">
+            <Image Source="image3.png" HeightRequest="100" WidthRequest="100" />
+            <Label Text="{Binding NewUsername}" FontSize="18" FontAttributes="Bold" />
+        </VerticalStackLayout>
+
+        <!-- Kartica s unosom -->
+        <Frame Grid.Row="2"
+               CornerRadius="30"
+               Padding="25"
+               Margin="20"
+               BackgroundColor="#F4F4F4"
+               HasShadow="True">
+
+            <VerticalStackLayout Spacing="15">
+                <Entry Placeholder="Enter your new nickname"
+                       Text="{Binding NewUsername}"
+                       BackgroundColor="White"
+                       HeightRequest="50" />
+
+                <Entry Placeholder="Enter your new email"
+                       Text="{Binding NewEmail}"
+                       BackgroundColor="White"
+                       HeightRequest="50" />
+
+                <!-- Prikaži eventualnu grešku -->
+                <Label Text="{Binding ErrorMessage}" TextColor="Red" FontSize="14" IsVisible="{Binding ErrorMessage, Converter={StaticResource StringToBoolConverter}}" />
+
+                <Button Text="Save changes"
+                        Command="{Binding SaveCommand}"
+                        BackgroundColor="#C4DFFF"
+                        TextColor="Black"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        HorizontalOptions="Center" />
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

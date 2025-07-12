@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DigitalDialogueHub.Mobile.Views.DiscussionsPage"
+             Title="Discussions">
+
+    <CollectionView ItemsSource="{Binding Discussions}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Frame Padding="10" Margin="5" CornerRadius="8" BorderColor="LightGray">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="Medium" />
+                        <Label Text="{Binding UserName}" FontSize="Small" TextColor="Gray" />
+                        <!-- Dodaj još ako imaš polja u DTO -->
+                    </VerticalStackLayout>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

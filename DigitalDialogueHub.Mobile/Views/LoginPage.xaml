@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DigitalDialogueHub.Mobile.Views.LoginPage"
+             BackgroundColor="#F5F5F5"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,60" Spacing="22" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+
+            <!-- Logo -->
+            <Image Source="logo.png"
+                   HeightRequest="110"
+                   WidthRequest="110"
+                   HorizontalOptions="Center"
+                   Aspect="AspectFit"/>
+
+            <!-- Naslov -->
+            <Label Text="Login"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   TextColor="#1B1B1B"
+                   HorizontalOptions="Center"/>
+
+            <!-- Email -->
+            <Frame CornerRadius="25"
+                   BackgroundColor="White"
+                   Padding="20,0"
+                   HasShadow="False"
+                   HeightRequest="50"
+                   WidthRequest="300">
+                <Entry
+                    Placeholder="Email address"
+                    Text="{Binding Email}"
+                    Keyboard="Email"
+                    TextColor="Black"
+                    FontSize="14"
+                    BackgroundColor="Transparent"
+                    Margin="0"/>
+            </Frame>
+
+            <!-- Password -->
+            <Frame CornerRadius="25"
+                   BackgroundColor="White"
+                   Padding="20,0"
+                   HasShadow="False"
+                   HeightRequest="50"
+                   WidthRequest="300">
+                <Entry
+                    Placeholder="Password"
+                    IsPassword="True"
+                    Text="{Binding Password}"
+                    TextColor="Black"
+                    FontSize="14"
+                    BackgroundColor="Transparent"
+                    Margin="0"/>
+            </Frame>
+
+            <!-- Login Button -->
+            <Button Text="Login"
+                    Command="{Binding LoginCommand}"
+                    BackgroundColor="#CFE6F4"
+                    TextColor="Black"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    WidthRequest="300"
+                    FontSize="16"
+                    HorizontalOptions="Center"
+          
+                    />
+
+            <!-- Error message -->
+            <Label Text="{Binding ErrorMessage}"
+                   TextColor="Red"
+                   FontSize="13"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding HasError, Converter={StaticResource StringNotNullOrEmptyConverter}}" />
+
+            <!-- OR separator -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <BoxView WidthRequest="50" HeightRequest="1" BackgroundColor="#CCC" VerticalOptions="Center"/>
+                <Label Text="or" TextColor="#888" FontSize="12"/>
+                <BoxView WidthRequest="50" HeightRequest="1" BackgroundColor="#CCC" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- Google login (stub) -->
+            <Button Text="Continue with Google"
+                    Command="{Binding GoogleLoginCommand}"
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    WidthRequest="300"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    ImageSource="image2.png"
+                    ContentLayout="Left,20"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

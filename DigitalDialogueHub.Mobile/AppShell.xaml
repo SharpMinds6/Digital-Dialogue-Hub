@@ -1,0 +1,80 @@
+<Shell
+    x:Class="DigitalDialogueHub.Mobile.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:DigitalDialogueHub.Mobile.Views">
+
+    <!-- Ostale strane koje nisu u flyoutu -->
+    <!-- Onboarding i početne stranice -->
+    <ShellContent Route="WelcomePage" ContentTemplate="{DataTemplate views:WelcomePage}" />
+    <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate views:LoginPage}" />
+    <ShellContent Route="RegisterPage" ContentTemplate="{DataTemplate views:RegisterPage}" />
+    <ShellContent Route="UsernamePage" ContentTemplate="{DataTemplate views:UsernamePage}" />
+
+    <!-- Glavne funkcionalnosti foruma -->
+    <ShellContent Route="ForumPage" ContentTemplate="{DataTemplate views:ForumPage}" />
+    <ShellContent Route="DiscussionsPage" ContentTemplate="{DataTemplate views:DiscussionsPage}" />
+    <ShellContent Route="NewPostPage" ContentTemplate="{DataTemplate views:NewPostPage}" />
+
+    <!-- Profil i podešavanja -->
+    <ShellContent Route="AccountPage" ContentTemplate="{DataTemplate views:AccountPage}" />
+    <ShellContent Route="EditProfilePage" ContentTemplate="{DataTemplate views:EditProfilePage}" />
+    <ShellContent Route="ChangePersonalInfoPage" ContentTemplate="{DataTemplate views:ChangePersonalInfoPage}" />
+    <ShellContent Route="ChangePasswordPage" ContentTemplate="{DataTemplate views:ChangePasswordPage}" />
+    <ShellContent Route="SettingsPage" ContentTemplate="{DataTemplate views:SettingsPage}" />
+
+    <!-- Moje objave i bedževi -->
+    <ShellContent Route="MyPostsPage" ContentTemplate="{DataTemplate views:MyPostsPage}" />
+    <ShellContent Route="BadgesPage" Title="Badges" ContentTemplate="{DataTemplate views:UserBadgesPage}" />
+    <ShellContent Route="LeaderboardsPage" Title="Leaderboard" ContentTemplate="{DataTemplate views:LeaderboardsPage}" />
+
+    <!-- Notifikacije -->
+    <ShellContent Route="NotificationPage" ContentTemplate="{DataTemplate views:NotificationPage}" />
+
+
+    <!-- Forum kategorije u flyoutu -->
+    <FlyoutItem Title="All" Icon="icon_all.png" Route="ForumAll">
+        <ShellContent ContentTemplate="{DataTemplate views:ForumPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Literature" Icon="emoji_books.png" Route="ForumLiterature">
+        <ShellContent ContentTemplate="{DataTemplate views:ForumPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Art" Icon="emoji_artistpalette.png" Route="ForumArt">
+        <ShellContent ContentTemplate="{DataTemplate views:ForumPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="History" Icon="illustration_thegreatpyramid.png" Route="ForumHistory">
+        <ShellContent ContentTemplate="{DataTemplate views:ForumPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Technology" Icon="illustration_artifical_inteligence.png" Route="ForumTechnology">
+        <ShellContent ContentTemplate="{DataTemplate views:ForumPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Sport" Icon="sport_icon.png" Route="ForumSport">
+        <ShellContent ContentTemplate="{DataTemplate views:ForumPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Mathematics &amp; Logic" Icon="math_icon.png" Route="ForumMath">
+        <ShellContent ContentTemplate="{DataTemplate views:ForumPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Psychology" Icon="psycology_icon.png" Route="ForumPsychology">
+        <ShellContent ContentTemplate="{DataTemplate views:ForumPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Research &amp; Innovation" Icon="research_icon.png" Route="ForumResearch">
+        <ShellContent ContentTemplate="{DataTemplate views:ForumPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Business &amp; Economics" Icon="business_icon.png" Route="ForumBusiness">
+        <ShellContent ContentTemplate="{DataTemplate views:ForumPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Food" Icon="food_icon.png" Route="ForumFood">
+        <ShellContent ContentTemplate="{DataTemplate views:ForumPage}" />
+    </FlyoutItem>
+
+</Shell>

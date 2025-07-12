@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:dto="clr-namespace:DigitalDialogueHub.Mobile.DTOs"
+    xmlns:viewmodels="clr-namespace:DigitalDialogueHub.Mobile.ViewModels"
+    x:Class="DigitalDialogueHub.Mobile.Views.CommentsPopup"
+    x:DataType="viewmodels:CommentsPopupViewModel"
+    x:Name="CommentsPopupRoot"
+    Color="Transparent">
+
+    <Border
+        BackgroundColor="White"
+        Stroke="#dbeafe"
+        StrokeThickness="2"
+        Padding="15"
+        Margin="10"
+        WidthRequest="360"
+        HorizontalOptions="Center"
+        VerticalOptions="End"
+        StrokeShape="RoundRectangle 30">
+
+        <VerticalStackLayout Spacing="12">
+
+            <!-- Header -->
+            <Label Text="Comments"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,8,0,0"/>
+
+            <!-- Lista komentara -->
+            <CollectionView ItemsSource="{Binding Comments}" HeightRequest="270">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="dto:CommentDto">
+                        <Grid ColumnDefinitions="Auto,*,Auto" Padding="0,8">
+                            <!-- Avatar -->
+                            <Image Source="avatar.png" HeightRequest="34" WidthRequest="34" Grid.Column="0" VerticalOptions="Start"/>
+
+                            <!-- Ime i tekst + replies -->
+                            <VerticalStackLayout Grid.Column="1" Padding="8,0" Spacing="2">
+                                <Label Text="{Binding Author}" FontAttributes="Bold" FontSize="13"/>
+                                <Label Text="{Binding Text}" FontSize="12" TextColor="Gray"/>
+
+                                <!-- Prikaz odgovora (reply) na komentar -->
+                                <CollectionView ItemsSource="{Binding Replies}" Margin="0,6,0,0" SelectionMode="None"
+                                                IsVisible="{Binding Replies.Count, Converter={StaticResource GreaterThanZeroConverter}}">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="dto:CommentDto">
+                                            <Frame Padding="7,3"
+                                                   Margin="0,3,0,0"
+                                                   CornerRadius="12"
+                                                   BackgroundColor="#F5F8FF"
+                                                   HasShadow="False">
+                                                <VerticalStackLayout>
+                                                    <Label Text="{Binding Author}" FontSize="11" FontAttributes="Bold" />
+                                                    <Label Text="{Binding Text}" FontSize="11" TextColor="Gray" />
+                                                </VerticalStackLayout>
+                                            </Frame>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </VerticalStackLayout>
+
+                            <!-- Reactions -->
+                            <VerticalStackLayout Grid.Column="2" Spacing="4" VerticalOptions="Center">
+                                <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                                    <ImageButton Source="icon_heart.png"
+                                                 WidthRequest="20" HeightRequest="20"
+                                                 Command="{Binding LikeCommand}"
+                                                 BackgroundColor="Transparent"/>
+                                    <Label Text="{Binding Likes}" FontSize="11" VerticalOptions="Center"/>
+
+                                    <ImageButton Source="dislike_icon.png"
+                                                 WidthRequest="20" HeightRequest="20"
+                                                 Command="{Binding DislikeCommand}"
+                                                 BackgroundColor="Transparent"/>
+                                    <Label Text="{Binding Dislikes}" FontSize="11" VerticalOptions="Center"/>
+
+                                    <ImageButton Source="icon_reply.png" WidthRequest="20" HeightRequest="20"
+                                                 Command="{Binding BindingContext.ReplyToCommentCommand, Source={x:Reference CommentsPopupRoot}}"
+                                                 CommandParameter="{Binding .}"
+                                                 BackgroundColor="Transparent"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Reply mode prikaz -->
+            <Frame IsVisible="{Binding IsReplying}" BackgroundColor="#dbeafe" Padding="5,0" CornerRadius="14" Margin="0,0,0,0">
+                <HorizontalStackLayout>
+                    <Label Text="Replying to:" FontSize="12" TextColor="Gray"/>
+                    <Label Text="{Binding ReplyingToAuthor}" FontSize="12" FontAttributes="Bold" Margin="3,0,0,0"/>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Input za komentar/reply -->
+            <Grid ColumnDefinitions="*,Auto" Padding="0,0,0,8">
+                <Entry Placeholder="Start the conversation..." Text="{Binding NewComment}" Grid.Column="0"
+                       BackgroundColor="White" FontSize="13"/>
+                <ImageButton Source="send_icon.png"
+                             Command="{Binding SendCommentCommand}"
+                             Grid.Column="1"
+                             HeightRequest="34" WidthRequest="34"
+                             BackgroundColor="Transparent"
+                             Margin="8,0,0,0"/>
+            </Grid>
+        </VerticalStackLayout>
+    </Border>
+</toolkit:Popup>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DigitalDialogueHub.Mobile.Views.NewPostPage"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:viewmodels="clr-namespace:DigitalDialogueHub.Mobile.ViewModels"
+             x:DataType="viewmodels:NewPostPageViewModel">
+
+    <Grid Padding="20" RowDefinitions="Auto,Auto,Auto,Auto,*,Auto,Auto" RowSpacing="10">
+
+        <!-- Close button -->
+        <Image Source="icon_close.png"
+               WidthRequest="24" HeightRequest="24"
+               HorizontalOptions="End"
+               Grid.Row="0">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnCloseTapped" />
+            </Image.GestureRecognizers>
+        </Image>
+
+        <!-- Title label -->
+        <Label Text="Topic title"
+               FontSize="20"
+               FontAttributes="Bold"
+               TextColor="#607D8B"
+               Grid.Row="1" />
+
+        <!-- Category picker (button-like) -->
+        <HorizontalStackLayout Grid.Row="2" Spacing="8" VerticalOptions="Center">
+            <Image Source="{Binding SelectedCategoryIcon}" WidthRequest="16" HeightRequest="16">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenCategorySelectionCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="{Binding SelectedCategoryDisplay}"
+                   TextColor="#90A4AE"
+                   FontSize="14">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenCategorySelectionCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </HorizontalStackLayout>
+
+        <!-- Content label -->
+        <Label Grid.Row="3"
+               Text="Content: here you can insert text, images or videos"
+               FontSize="14"
+               TextColor="#90A4AE" />
+
+        <!-- Editor for post content -->
+        <Editor Grid.Row="4"
+                Placeholder="Write your post here..."
+                AutoSize="TextChanges"
+                TextColor="Black"
+                BackgroundColor="#F0F0F0"
+                Margin="0,10"
+                Text="{Binding Content, Mode=TwoWay}" />
+
+        <!-- Buttons for adding photo, video, link and Post button -->
+        <Grid Grid.Row="5" ColumnDefinitions="Auto,Auto,Auto,*,Auto" Padding="0,10" ColumnSpacing="15">
+            <Image Source="tabler_photo.png" WidthRequest="24" HeightRequest="24" Grid.Column="0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnAddPhotoTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="group_icon.png" WidthRequest="24" HeightRequest="24" Grid.Column="1">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnAddVideoTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="icon_link.png" WidthRequest="24" HeightRequest="24" Grid.Column="2">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnAddLinkTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Label Grid.Column="3" VerticalOptions="Center" TextColor="Red" Text="{Binding ErrorMessage}" />
+
+            <Button Text="Post"
+                    BackgroundColor="#CFE6F4"
+                    TextColor="Black"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    WidthRequest="80"
+                    Command="{Binding PostCommand}"
+                    Grid.Column="4" />
+        </Grid>
+
+        <!-- Optional: Display lists of images, videos, links added -->
+        <ScrollView Grid.Row="6" HeightRequest="80" Orientation="Horizontal">
+            <HorizontalStackLayout Spacing="10" Padding="5">
+                <!-- Display images -->
+                <CollectionView ItemsSource="{Binding ImagePaths}" ItemsLayout="HorizontalList">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="5" CornerRadius="10" BackgroundColor="#EEE" Margin="2">
+                                <Image Source="{Binding .}" HeightRequest="60" WidthRequest="60" Aspect="AspectFill"/>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Display videos (could be thumbnails or icons) -->
+                <CollectionView ItemsSource="{Binding VideoPaths}" ItemsLayout="HorizontalList">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="5" CornerRadius="10" BackgroundColor="#EEE" Margin="2" WidthRequest="60" HeightRequest="60" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Image Source="video_icon.png" HeightRequest="40" WidthRequest="40" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Display links -->
+                <CollectionView ItemsSource="{Binding Links}" ItemsLayout="HorizontalList">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="5" CornerRadius="10" BackgroundColor="#EEE" Margin="2" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Label Text="{Binding .}" FontSize="12" TextColor="#007ACC" />
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </HorizontalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

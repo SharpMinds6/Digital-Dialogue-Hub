@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DigitalDialogueHub.Mobile.Views.WelcomePage"
+             BackgroundImageSource="image1.png"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid Padding="25" RowDefinitions="*,Auto,*">
+
+        <Image Grid.Row="0"
+               Source="logo.png"
+               HeightRequest="120"
+               WidthRequest="120"
+               HorizontalOptions="Center"
+               VerticalOptions="End" />
+
+        <VerticalStackLayout Grid.Row="1"
+                             Spacing="18"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
+
+            <Label Text="Welcome to"
+                   FontSize="20"
+                   TextColor="White"
+                   HorizontalTextAlignment="Center" />
+
+            <Label Text="Digital Dialogue Hub"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#FFB6C1"
+                   HorizontalTextAlignment="Center" />
+
+            <Label HorizontalTextAlignment="Center"
+                   FontSize="14"
+                   TextColor="White"
+                   HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Login to your account" />
+                        <Span Text="&#10;or&#10;" />
+                        <Span Text="create an account to get started" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Button Text="Login"
+                    Clicked="OnLoginClicked"
+                    BackgroundColor="#CFE6F4"
+                    TextColor="Black"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    WidthRequest="250"
+                    HorizontalOptions="Center" />
+
+            <Button Text="Sign up"
+                    Clicked="OnSignUpClicked"
+                    BackgroundColor="#CFE6F4"
+                    TextColor="Black"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    WidthRequest="250"
+                    HorizontalOptions="Center" />
+        </VerticalStackLayout>
+
+        <BoxView Grid.Row="2" HeightRequest="30" />
+    </Grid>
+</ContentPage>

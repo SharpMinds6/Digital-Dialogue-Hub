@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DigitalDialogueHub.Mobile.Views.UsernamePage"
+             BackgroundColor="#F5F5F5"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+
+            <!-- Logo -->
+            <Image Source="logo.png"
+                   HeightRequest="100"
+                   HorizontalOptions="Center" />
+
+            <!-- Naslov -->
+            <Label Text="Create your username"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="#1B1B1B" />
+
+            <!-- Opis -->
+            <Label Text="Create a username you want to use.\nYour username will be visible to other users."
+                   FontSize="14"
+                   TextColor="#666"
+                   HorizontalTextAlignment="Center" />
+
+            <!-- Username -->
+            <Frame CornerRadius="25" BackgroundColor="White" Padding="10" HasShadow="False" WidthRequest="280">
+                <Entry x:Name="UsernameEntry"
+                       Placeholder="Username"
+                       TextColor="Black" />
+            </Frame>
+
+            <!-- Role Picker -->
+            <Frame CornerRadius="25" BackgroundColor="White" Padding="10" HasShadow="False" WidthRequest="280">
+                <Picker x:Name="RolePicker"
+                        Title="Select role"
+                        TextColor="Black">
+                    <Picker.Items>
+                        <x:String>Student</x:String>
+                        <x:String>Moderator</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Frame>
+
+            <!-- Continue Button -->
+            <Button Text="Continue"
+                    Clicked="OnContinueClicked"
+                    BackgroundColor="#CFE6F4"
+                    TextColor="Black"
+                    CornerRadius="25"
+                    HeightRequest="45"
+                    WidthRequest="280" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

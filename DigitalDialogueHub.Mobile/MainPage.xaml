@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:views="clr-namespace:DigitalDialogueHub.Mobile.Views"
+            x:Class="DigitalDialogueHub.Mobile.MainPage">
+
+    <FlyoutPage.Flyout>
+        <ContentPage Title="Categories" BackgroundColor="White">
+            <VerticalStackLayout Padding="20" Spacing="15">
+                <Label Text="Categories" FontAttributes="Bold" FontSize="20" />
+
+                <HorizontalStackLayout>
+                    <Image Source="iconpark_allapplication.png" WidthRequest="20" />
+                    <Label Text="All" Padding="10,0" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Image Source="emoji_books.png" WidthRequest="20" />
+                    <Label Text="Literature" Padding="10,0" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Image Source="emoji_artistpalette.png" WidthRequest="20" />
+                    <Label Text="Art" Padding="10,0" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Image Source="illustration_thegreatpyramid.png" WidthRequest="20" />
+                    <Label Text="History" Padding="10,0" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Image Source="illustration_artifical_inteligence.png" WidthRequest="20" />
+                    <Label Text="Technology" Padding="10,0" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Image Source="sport_icon.png" WidthRequest="20" />
+                    <Label Text="Sport" Padding="10,0" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Image Source="math_icon.png" WidthRequest="20" />
+                    <Label Text="Mathematics &amp; Logic" Padding="10,0" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Image Source="psychology_icon.png" WidthRequest="20" />
+                    <Label Text="Psychology" Padding="10,0" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Image Source="research_icon.png" WidthRequest="20" />
+                    <Label Text="Research &amp; Innovation" Padding="10,0" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Image Source="business_icon.png" WidthRequest="20" />
+                    <Label Text="Business &amp; Economics" Padding="10,0" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Image Source="food_icon.png" WidthRequest="20" />
+                    <Label Text="Food" Padding="10,0" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ContentPage>
+    </FlyoutPage.Flyout>
+
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <views:ForumPage />
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

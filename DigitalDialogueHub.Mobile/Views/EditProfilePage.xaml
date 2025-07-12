@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:DigitalDialogueHub.Mobile.ViewModels"
+             x:Class="DigitalDialogueHub.Mobile.Views.EditProfilePage"
+             x:DataType="viewmodels:EditProfilePageViewModel"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+
+
+    <Grid RowDefinitions="Auto,Auto,*">
+        <!-- Header -->
+        <Grid Padding="20,40,20,10" ColumnDefinitions="Auto,*">
+            <Image Source="icon_back.png"
+                   HeightRequest="24"
+                   WidthRequest="24"
+                   VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="Edit Profile"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Grid.Column="1" />
+        </Grid>
+
+        <!-- Avatar + user info -->
+        <VerticalStackLayout Grid.Row="1" Padding="30,0,30,10" Spacing="8" HorizontalOptions="Center">
+            <Image Source="image3.png" HeightRequest="100" WidthRequest="100" />
+            <Label Text="{Binding Username}" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" />
+            <Label Text="{Binding Email}" FontSize="14" TextColor="Gray" HorizontalOptions="Center" />
+            <Label Text="{Binding Role}" FontSize="13" TextColor="#4682B4" HorizontalOptions="Center" FontAttributes="Italic"/>
+        </VerticalStackLayout>
+
+        <!-- Card content -->
+        <Frame Grid.Row="2"
+               CornerRadius="30"
+               Padding="20"
+               Margin="20"
+               BackgroundColor="#F4F4F4"
+               HasShadow="True">
+            <VerticalStackLayout Spacing="15">
+                <Label Text="Choose what you want to change:"
+                       FontSize="14"
+                       TextColor="Gray"
+                       HorizontalOptions="Center" />
+
+                <Button Text="Change your personal info"
+                        Clicked="OnChangePersonalClicked"
+                        BackgroundColor="#C4DFFF"
+                        TextColor="Black"
+                        CornerRadius="20"
+                        WidthRequest="250"
+                        HeightRequest="50" />
+
+                <Button Text="Change your password"
+                        Clicked="OnChangePasswordClicked"
+                        BackgroundColor="#A9B7C9"
+                        TextColor="White"
+                        CornerRadius="20"
+                        WidthRequest="250"
+                        HeightRequest="50" />
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

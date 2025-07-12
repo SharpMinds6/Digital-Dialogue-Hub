@@ -1,0 +1,51 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:DigitalDialogueHub.Mobile.ViewModels"
+             x:Class="DigitalDialogueHub.Mobile.Views.RegisterPage"
+             BackgroundColor="#F5F5F5"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="CenterAndExpand">
+
+            <Image Source="logo.png" HeightRequest="100" HorizontalOptions="Center" />
+
+            <Label Text="Sign up"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="#1B1B1B" />
+
+            <Frame CornerRadius="25" BackgroundColor="White" Padding="10" HasShadow="False">
+                <Entry Placeholder="Email address"
+                       Keyboard="Email"
+                       Text="{Binding Email, Mode=TwoWay}"
+                       TextColor="Black" />
+            </Frame>
+
+            <Frame CornerRadius="25" BackgroundColor="White" Padding="10" HasShadow="False">
+                <Entry Placeholder="Password"
+                       IsPassword="True"
+                       Text="{Binding Password, Mode=TwoWay}"
+                       TextColor="Black" />
+            </Frame>
+
+            <Frame CornerRadius="25" BackgroundColor="White" Padding="10" HasShadow="False">
+                <Entry Placeholder="Confirm password"
+                       IsPassword="True"
+                       Text="{Binding ConfirmPassword, Mode=TwoWay}"
+                       TextColor="Black" />
+            </Frame>
+
+            <Button Text="Sign up"
+                    Command="{Binding RegisterCommand}"
+                    BackgroundColor="#CFE6F4"
+                    TextColor="Black"
+                    CornerRadius="25"
+                    HeightRequest="45" />
+
+            <Label Text="{Binding ErrorMessage}" TextColor="Red" HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
